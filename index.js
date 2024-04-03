@@ -9,6 +9,8 @@ app.use(cors({ origin: '*' }))
 saltRounds = 10
 
 
+//enlace base de datos: https://console.clever-cloud.com/organisations/orga_11d59417-a061-4655-86c6-1493d43f1b31/addons/addon_eb73ce18-362a-4939-9531-8ababa532211
+
 const port = 4000
 
 const users = [
@@ -46,10 +48,14 @@ app.post("/create-user", (req, res) => {
 // conexion que enviara usuarios a la base de datos
 
 const connection = mysql.createConnection({
-  host: "127.0.0.1",  // Usa el nombre de host proporcionado
-  user: "root",
-  password: "spizamarillo2715",
-  database: "cheff_tweet",
+  // host: "127.0.0.1",  // Usa el nombre de host proporcionado
+ host: "bbvn0lj6xje1xr4hki5s-mysql.services.clever-cloud.com", 
+  // user: "root",
+  user: "umnyffegegdfrmeh",
+  // password: "spizamarillo2715",
+  password: "vwjxG0hZ4lvoyTvuocUf",
+  // database: "cheff_tweet",
+  database: "bbvn0lj6xje1xr4hki5s",
   port: 3306,  // Utiliza el puerto proporcionado
 });
 
@@ -167,75 +173,3 @@ console.log("la ip del usuario que registro la receta es" + ip)
 
 
 
-
-
-// Encriptacion
-
-
-
-
-// app.post("/store-user", async (req, res) => {
-//   const newUser = req.body;
-
-//   const hashedPassword = await bcrypt.hash(newUser.password, saltRounds)
-//   newUser.password = hashedPassword
-
-  // Insertar el nuevo usuario en la base de datos
-//   connection.query("INSERT INTO Usuarios SET ?", newUser, (error, results, fields) => {
-//     console.log("Dentro de la función de callback de connection.query");
-//     console.log("Error:", error);
-//     console.log("Results:", results);
-//     console.log("Fields:", fields);
-//     if (error) {
-//       console.error("Error al insertar el nuevo usuario:", error);
-//       res.status(500).json({ message: "Error al insertar el nuevo usuario en la base de datos" });
-//     } else {
-//       console.log("Nuevo usuario insertado con éxito");
-//       res.status(200).json({ message: "Datos de usuario recibidos y guardados exitosamente" });
-//     }
-//   });
-// });
-
-
-
-
-
-
-
-// Comparacion login con usuarios base de datos encripata
-
-
-// app.post("/login", async (req, res) => {
-//   const { username, contraseña, email } = req.body;
-
-//   // Consulta SQL para buscar al usuario en la base de datos
-//   const query = "SELECT * FROM Usuarios WHERE user = ? AND email = ?";
-//   connection.query(query, [username, email], async (error, results, fields) => {
-//     if (error) {
-//       console.error("Error al buscar usuario en la base de datos:", error);
-//       res.status(500).json({ message: "Error interno al buscar usuario en la base de datos" });
-//       return;
-//     }
-
-//     // Verificar si se encontró el usuario
-//     if (results.length > 0) {
-//       const user = results[0];
-
-//       // Comparar la contraseña proporcionada con la contraseña almacenada usando bcrypt.compare
-//       try {
-//         const passwordMatch = await bcrypt.compare(contraseña, user.password);
-
-//         if (passwordMatch) {
-//           res.status(200).json({ message: "Inicio de sesión exitoso" });
-//         } else {
-//           res.status(401).json({ message: "Credenciales incorrectas" });
-//         }
-//       } catch (error) {
-//         console.error("Error al comparar contraseñas:", error);
-//         res.status(500).json({ message: "Error interno al comparar contraseñas" });
-//       }
-//     } else {
-//       res.status(401).json({ message: "Credenciales incorrectas" });
-//     }
-//   });
-// });
