@@ -49,7 +49,7 @@ const connection = mysql.createConnection({
   host: "127.0.0.1",  // Usa el nombre de host proporcionado
   user: "root",
   password: "spizamarillo2715",
-  database: "Cheff_Tweet",
+  database: "cheff_tweet",
   port: 3306,  // Utiliza el puerto proporcionado
 });
 
