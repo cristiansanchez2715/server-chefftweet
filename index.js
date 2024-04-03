@@ -5,7 +5,7 @@ const mysql = require("mysql2")
 // ejecutando metodos para el funcionamiento correcto
 app.use(express.json());
 app.use(cors({ origin: '*' }))
-const bcrypt = require('bcrypt')
+// const bcrypt = require('bcrypt')
 saltRounds = 10
 
 
