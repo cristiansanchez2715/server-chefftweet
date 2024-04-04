@@ -73,7 +73,7 @@ app.post("/store-user", (req, res) => {
 const newUser = req.body;
 
 // Insertar el nuevo usuario en la base de datos
-connection.query("INSERT INTO Usuarios SET ?", newUser, (error, results, fields) => {
+connection.query("INSERT INTO usuarios SET ?", newUser, (error, results, fields) => {
   console.log("Dentro de la función de callback de connection.query");
   console.log("Error:", error);
   console.log("Results:", results);
@@ -93,7 +93,7 @@ connection.query("INSERT INTO Usuarios SET ?", newUser, (error, results, fields)
 // traer base de datos hasta el backend
 
 app.get("/get_users", (req, res) => {
-    connection.query("SELECT * FROM Usuarios;", (error, results, fields) => {
+    connection.query("SELECT * FROM usuarios;", (error, results, fields) => {
         if(error){
             console.error("error is " + error)
             res.status(500).json({ message: "Error al obtener los usuarios de la base de datos" });
@@ -137,7 +137,7 @@ app.post("/login", (req, res) => {
     let ip = req.ip
 console.log("la ip del usuario que registro la receta es" + ip)
     // Insertar la nueva receta en la base de datos
-    connection.query("INSERT INTO Recetas SET ?", newRecet, (error, results, fields) => {
+    connection.query("INSERT INTO recetas SET ?", newRecet, (error, results, fields) => {
       console.log("Dentro de la función de callback de connection.query");
       console.log("Error:", error);
       console.log("Results:", results);
@@ -156,7 +156,7 @@ console.log("la ip del usuario que registro la receta es" + ip)
   // Traer recetas desde la base de datos
 
   app.get("/get_recets", (req, res) => {
-    connection.query("SELECT * FROM Recetas;", (error, results, fields) => {
+    connection.query("SELECT * FROM recetas;", (error, results, fields) => {
         if(error){
             console.error("error is " + error)
             res.status(500).json({ message: "Error al obtener los usuarios de la base de datos" });
